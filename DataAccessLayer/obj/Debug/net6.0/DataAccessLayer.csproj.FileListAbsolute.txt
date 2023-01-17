@@ -1,0 +1,17 @@
+C:\Users\ngsl0531\invoicingApp\ArcelormittalInvoicingApp\DataAccessLayer\bin\Debug\net6.0\DataAccessLayer.deps.json
+C:\Users\ngsl0531\invoicingApp\ArcelormittalInvoicingApp\DataAccessLayer\bin\Debug\net6.0\DataAccessLayer.runtimeconfig.json
+C:\Users\ngsl0531\invoicingApp\ArcelormittalInvoicingApp\DataAccessLayer\bin\Debug\net6.0\DataAccessLayer.dll
+C:\Users\ngsl0531\invoicingApp\ArcelormittalInvoicingApp\DataAccessLayer\bin\Debug\net6.0\DataAccessLayer.pdb
+C:\Users\ngsl0531\invoicingApp\ArcelormittalInvoicingApp\DataAccessLayer\bin\Debug\net6.0\DTOS.dll
+C:\Users\ngsl0531\invoicingApp\ArcelormittalInvoicingApp\DataAccessLayer\bin\Debug\net6.0\DTOS.pdb
+C:\Users\ngsl0531\invoicingApp\ArcelormittalInvoicingApp\DataAccessLayer\obj\Debug\net6.0\DataAccessLayer.csproj.AssemblyReference.cache
+C:\Users\ngsl0531\invoicingApp\ArcelormittalInvoicingApp\DataAccessLayer\obj\Debug\net6.0\DataAccessLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ngsl0531\invoicingApp\ArcelormittalInvoicingApp\DataAccessLayer\obj\Debug\net6.0\DataAccessLayer.AssemblyInfoInputs.cache
+C:\Users\ngsl0531\invoicingApp\ArcelormittalInvoicingApp\DataAccessLayer\obj\Debug\net6.0\DataAccessLayer.AssemblyInfo.cs
+C:\Users\ngsl0531\invoicingApp\ArcelormittalInvoicingApp\DataAccessLayer\obj\Debug\net6.0\DataAccessLayer.csproj.CoreCompileInputs.cache
+C:\Users\ngsl0531\invoicingApp\ArcelormittalInvoicingApp\DataAccessLayer\obj\Debug\net6.0\DataAccessLayer.csproj.CopyComplete
+C:\Users\ngsl0531\invoicingApp\ArcelormittalInvoicingApp\DataAccessLayer\obj\Debug\net6.0\DataAccessLayer.dll
+C:\Users\ngsl0531\invoicingApp\ArcelormittalInvoicingApp\DataAccessLayer\obj\Debug\net6.0\refint\DataAccessLayer.dll
+C:\Users\ngsl0531\invoicingApp\ArcelormittalInvoicingApp\DataAccessLayer\obj\Debug\net6.0\DataAccessLayer.pdb
+C:\Users\ngsl0531\invoicingApp\ArcelormittalInvoicingApp\DataAccessLayer\obj\Debug\net6.0\DataAccessLayer.genruntimeconfig.cache
+C:\Users\ngsl0531\invoicingApp\ArcelormittalInvoicingApp\DataAccessLayer\obj\Debug\net6.0\ref\DataAccessLayer.dll

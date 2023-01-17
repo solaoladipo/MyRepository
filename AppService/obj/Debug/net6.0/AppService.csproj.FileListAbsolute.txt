@@ -1,0 +1,17 @@
+C:\Users\ngsl0531\invoicingApp\ArcelormittalInvoicingApp\AppService\bin\Debug\net6.0\AppService.deps.json
+C:\Users\ngsl0531\invoicingApp\ArcelormittalInvoicingApp\AppService\bin\Debug\net6.0\AppService.dll
+C:\Users\ngsl0531\invoicingApp\ArcelormittalInvoicingApp\AppService\bin\Debug\net6.0\AppService.pdb
+C:\Users\ngsl0531\invoicingApp\ArcelormittalInvoicingApp\AppService\bin\Debug\net6.0\DataAccessLayer.dll
+C:\Users\ngsl0531\invoicingApp\ArcelormittalInvoicingApp\AppService\bin\Debug\net6.0\DTOS.dll
+C:\Users\ngsl0531\invoicingApp\ArcelormittalInvoicingApp\AppService\bin\Debug\net6.0\DataAccessLayer.pdb
+C:\Users\ngsl0531\invoicingApp\ArcelormittalInvoicingApp\AppService\bin\Debug\net6.0\DTOS.pdb
+C:\Users\ngsl0531\invoicingApp\ArcelormittalInvoicingApp\AppService\obj\Debug\net6.0\AppService.csproj.AssemblyReference.cache
+C:\Users\ngsl0531\invoicingApp\ArcelormittalInvoicingApp\AppService\obj\Debug\net6.0\AppService.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ngsl0531\invoicingApp\ArcelormittalInvoicingApp\AppService\obj\Debug\net6.0\AppService.AssemblyInfoInputs.cache
+C:\Users\ngsl0531\invoicingApp\ArcelormittalInvoicingApp\AppService\obj\Debug\net6.0\AppService.AssemblyInfo.cs
+C:\Users\ngsl0531\invoicingApp\ArcelormittalInvoicingApp\AppService\obj\Debug\net6.0\AppService.csproj.CoreCompileInputs.cache
+C:\Users\ngsl0531\invoicingApp\ArcelormittalInvoicingApp\AppService\obj\Debug\net6.0\AppService.csproj.CopyComplete
+C:\Users\ngsl0531\invoicingApp\ArcelormittalInvoicingApp\AppService\obj\Debug\net6.0\AppService.dll
+C:\Users\ngsl0531\invoicingApp\ArcelormittalInvoicingApp\AppService\obj\Debug\net6.0\refint\AppService.dll
+C:\Users\ngsl0531\invoicingApp\ArcelormittalInvoicingApp\AppService\obj\Debug\net6.0\AppService.pdb
+C:\Users\ngsl0531\invoicingApp\ArcelormittalInvoicingApp\AppService\obj\Debug\net6.0\ref\AppService.dll

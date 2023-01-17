@@ -1,0 +1,12 @@
+C:\Users\ngsl0531\invoicingApp\ArcelormittalInvoicingApp\DTOS\bin\Debug\net6.0\DTOS.deps.json
+C:\Users\ngsl0531\invoicingApp\ArcelormittalInvoicingApp\DTOS\bin\Debug\net6.0\DTOS.dll
+C:\Users\ngsl0531\invoicingApp\ArcelormittalInvoicingApp\DTOS\bin\Debug\net6.0\DTOS.pdb
+C:\Users\ngsl0531\invoicingApp\ArcelormittalInvoicingApp\DTOS\obj\Debug\net6.0\DTOS.csproj.AssemblyReference.cache
+C:\Users\ngsl0531\invoicingApp\ArcelormittalInvoicingApp\DTOS\obj\Debug\net6.0\DTOS.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ngsl0531\invoicingApp\ArcelormittalInvoicingApp\DTOS\obj\Debug\net6.0\DTOS.AssemblyInfoInputs.cache
+C:\Users\ngsl0531\invoicingApp\ArcelormittalInvoicingApp\DTOS\obj\Debug\net6.0\DTOS.AssemblyInfo.cs
+C:\Users\ngsl0531\invoicingApp\ArcelormittalInvoicingApp\DTOS\obj\Debug\net6.0\DTOS.csproj.CoreCompileInputs.cache
+C:\Users\ngsl0531\invoicingApp\ArcelormittalInvoicingApp\DTOS\obj\Debug\net6.0\DTOS.dll
+C:\Users\ngsl0531\invoicingApp\ArcelormittalInvoicingApp\DTOS\obj\Debug\net6.0\refint\DTOS.dll
+C:\Users\ngsl0531\invoicingApp\ArcelormittalInvoicingApp\DTOS\obj\Debug\net6.0\DTOS.pdb
+C:\Users\ngsl0531\invoicingApp\ArcelormittalInvoicingApp\DTOS\obj\Debug\net6.0\ref\DTOS.dll
