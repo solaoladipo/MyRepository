@@ -18,6 +18,29 @@ namespace AppService.AppGeneralService
             return Constr;
         }
 
+        public static string PV_ID()
+        {
+            string PVID = Convert.ToString("56D9DAE6-52AE-4DE2-B185-433D4A4AC2C7");
+            return PVID;
+        }
+
+        public static string SUPPLIER_ID()
+        {
+            string SUPPLIERID = Convert.ToString("411BDA0C-9F29-4B9A-AAF2-4758105158A8");
+            return SUPPLIERID;
+        }
+
+        public static string STAFF_ID()
+        {
+            string STAFFID = Convert.ToString("D5287042-A8C3-46D8-A64B-6E9F628A3B19");
+            return STAFFID;
+        }
+
+        public static string CUSTOMER_ID()
+        {
+            string CUSTOMERID = Convert.ToString("66E62FD7-17FE-4D92-98E1-84167042618E");
+            return CUSTOMERID;
+        }
         public static bool ifExistinDatabase(string refno, string fieldname, string tablename)
         {
             bool _ans = false;
@@ -73,21 +96,21 @@ namespace AppService.AppGeneralService
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandType = System.Data.CommandType.Text;
-                cmd.CommandText = "select * from tblRefnoTag where Refnoid = '" + Convert.ToString(refnoid) + "'";
+                cmd.CommandText = "select * from RefTag where RefnoID = '" + Convert.ToString(refnoid) + "'";
                 cmd.Connection = new SqlConnection(connection());
                 cmd.Connection.Open();
                 SqlDataReader Reader;
                 Reader = cmd.ExecuteReader();
                 if (Reader.Read())
                 {
-                    if (Reader["Tag"] != null)
+                    if (Reader["TagName"] != null)
                     {
-                        Prefix = Reader["Tag"].ToString();
+                        Prefix = Reader["TagName"].ToString();
                     }
 
-                    if (Reader["Serialno"] != null)
+                    if (Reader["serialNo"] != null)
                     {
-                        recount = Convert.ToInt32(Reader["Serialno"]);
+                        recount = Convert.ToInt32(Reader["serialNo"]);
                     }
 
                 }
@@ -151,7 +174,7 @@ namespace AppService.AppGeneralService
                 {
                     SqlCommand cmd1 = new SqlCommand();
                     cmd1.CommandType = System.Data.CommandType.Text;
-                    cmd1.CommandText = "update tblRefnoTag set serialno =" + recount + "where refnoid='" + refnoid + "'";
+                    cmd1.CommandText = "update RefTag set serialNo =" + recount + "where RefnoID='" + refnoid + "'";
                     cmd1.Connection = new SqlConnection(connection());
                     cmd1.Connection.Open();
                     cmd1.ExecuteNonQuery();
