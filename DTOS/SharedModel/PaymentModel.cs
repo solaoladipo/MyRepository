@@ -40,6 +40,7 @@ namespace DTOS.SharedModel
         public decimal? EarlierAdditionorDeduction { get; set; }
         public string? AnotherCharges { get; set; }
 
-        public  IEnumerable<CodingDetail>? CodingDetail { get; set; }
+        public  List<CodingDetail>? CodingDetail { get; set; }
+        
     }
 }

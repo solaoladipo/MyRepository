@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.unitOfwork
 {
-    public class UnitOfWork
+    public class UnitOfWork:IUnitOfWork
     {
         private AppContext context;
 
@@ -24,7 +24,7 @@ namespace DataAccessLayer.unitOfwork
         public IBeneficiaryRepository Beneficiary { get; private set; }
         public ICodingHeadRepository CodingHead { get; private set; }
         public ICodingDetailRepository CodingDetail { get; private set; }
-        public int save()
+        public int Save()
         {
            return this.context.SaveChanges();
         }
