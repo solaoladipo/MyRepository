@@ -24,8 +24,23 @@ namespace InvoicingApp.Controllers
         [Route("SaveBeneficiary")]
         public async Task<IActionResult> SaveBeneficiary(Beneficiary beneficiary)
         {
+            Guid beneId = Guid.Empty;
+            if(beneficiary.SetupOption == "Customer")
+            {
+                beneId = Guid.Parse(GeneralClass.CUSTOMER_ID());
+            }else if(beneficiary.SetupOption == "Staff")
+            {
+                beneId = Guid.Parse(GeneralClass.STAFF_ID());
+            }else if(beneficiary.SetupOption == "Supplier")
+            {
+                beneId = Guid.Parse(GeneralClass.SUPPLIER_ID());
+            }
+           
+
+
             beneficiary.BeneficiaryID = Guid.NewGuid();
             beneficiary.Datecreated = DateTime.Now;
+            beneficiary.BeneficiaryCode = GeneralClass.GetRefnumber(beneId, "BeneficiaryCode", "Beneficiary", true);
             //beneficiary.Createdby = User.Identity.Name;
             _unitOfwork.Beneficiary.Add(beneficiary);
              int record = await Task.Run(()=> _unitOfwork.Save());
@@ -110,13 +125,24 @@ namespace InvoicingApp.Controllers
 
             _unitOfwork.CodingHead.Add(head);
 
-            if (paymentModel.CodingDetail != null)
+            if (paymentModel.Detail != null)
             {
-                foreach (CodingDetail detail in paymentModel.CodingDetail)
+                foreach (Paymentdetails detail in paymentModel.Detail)
                 {
-                    detail.ColdingHeadId = HeadId;
-                    detail.ColdingDetailsId = Guid.NewGuid();
-                    _unitOfwork.CodingDetail.Add(detail);
+                    CodingDetail Cdetail = new CodingDetail()
+                    {
+                        ActualAmount = detail.ActualAmount,
+                        Allocate = detail.Allocate,
+                        ColdingHeadId = HeadId,
+                        ColdingDetailsId = Guid.NewGuid(),
+                        NetAmount = detail.NetAmount,
+                        Particulars = detail.Particulars,
+                        TransactionFee = detail.TransactionFee,
+                        VAT = detail.VAT,
+                        WHT = detail.WHT
+                    };
+                   
+                    _unitOfwork.CodingDetail.Add(Cdetail);
                 }
 
             }
@@ -139,15 +165,16 @@ namespace InvoicingApp.Controllers
         [Route("ModifyPaymentVoucher")]
         public async Task<IActionResult> ModifyPaymentVoucher(PaymentModel paymentModel)
         {
-            if (paymentModel.CodingDetail != null)
+            if (paymentModel.Detail != null)
             {
                 var details = await Task.Run(() => _unitOfwork.CodingDetail.Find(x => x.ColdingHeadId == paymentModel.ColdingHeadId).ToList());
+
                 _unitOfwork.CodingDetail.RemoveRange(details);
             }
 
             CodingHead? headModify = await Task.Run(()=> _unitOfwork.CodingHead.Find(x => x.ColdingHeadId == paymentModel.ColdingHeadId).FirstOrDefault());
             
-            if (headModify != null && paymentModel.CodingDetail != null)
+            if (headModify != null && paymentModel.Detail != null)
             {
                 _unitOfwork.CodingHead.Remove(headModify);
 
@@ -170,7 +197,27 @@ namespace InvoicingApp.Controllers
                     WHT = paymentModel.WHT
                 };
                 _unitOfwork.CodingHead.Add(head);
-                _unitOfwork.CodingDetail.AddRange(paymentModel.CodingDetail);
+
+                List<CodingDetail> Detaillist = new List<CodingDetail>();
+
+                 foreach (Paymentdetails detail in paymentModel.Detail)
+                {
+                    CodingDetail Cdetail = new CodingDetail()
+                    {
+                        ActualAmount = detail.ActualAmount,
+                        Allocate = detail.Allocate,
+                        ColdingHeadId = detail.ColdingHeadId,
+                        ColdingDetailsId = Guid.NewGuid(),
+                        NetAmount = detail.NetAmount,
+                        Particulars = detail.Particulars,
+                        TransactionFee = detail.TransactionFee,
+                        VAT = detail.VAT,
+                        WHT = detail.WHT
+                    };
+                    Detaillist.Add(Cdetail);
+                }
+
+                _unitOfwork.CodingDetail.AddRange(Detaillist);
 
             }
 
@@ -217,7 +264,20 @@ namespace InvoicingApp.Controllers
 
                 foreach (CodingDetail det in Details)
                 {
-                    DataModel.CodingDetail.Add(det);
+                    Paymentdetails detail = new Paymentdetails()
+                    {
+                        ActualAmount = det.ActualAmount,
+                        Allocate = det.Allocate,
+                        ColdingHeadId = det.ColdingHeadId,
+                        ColdingDetailsId = det.ColdingDetailsId,
+                        NetAmount = det.NetAmount,
+                        Particulars = det.Particulars,
+                        TransactionFee = det.TransactionFee,
+                        VAT = det.VAT,
+                        WHT = det.WHT
+                    };
+
+                    DataModel.Detail.Add(detail);
                 }
 
             }

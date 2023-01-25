@@ -12,7 +12,7 @@ namespace DTOS.SharedModel
     {
         public PaymentModel()
         {
-            this.CodingDetail = new List<CodingDetail>();
+            this.Detail = new List<Paymentdetails>();
         }
 
         public System.Guid ColdingHeadId { get; set; }
@@ -40,7 +40,29 @@ namespace DTOS.SharedModel
         public decimal? EarlierAdditionorDeduction { get; set; }
         public string? AnotherCharges { get; set; }
 
-        public  List<CodingDetail>? CodingDetail { get; set; }
+        public  List<Paymentdetails>? Detail { get; set; }
         
+    }
+
+    public class Paymentdetails
+    {
+        public Guid ColdingDetailsId { get; set; }
+        public Guid ColdingHeadId { get; set; }
+        public string? Particulars { get; set; }
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal? ActualAmount { get; set; }
+
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal? TransactionFee { get; set; }
+
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal? WHT { get; set; }
+
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal? VAT { get; set; }
+
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal? NetAmount { get; set; }
+        public string? Allocate { get; set; }
     }
 }
