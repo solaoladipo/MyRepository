@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGurdGuard } from './AuthGurd/auth-gurd.guard';
 import { LayoutComponent } from './layout/layout.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './Pages/dashboard/dashboard.component';
@@ -13,7 +14,7 @@ const routes: Routes = [
   {path: "register", component: RegisterComponent},
   {path: "layout", component: LayoutComponent, 
   children:[
-    {path: "",component: DashboardComponent},
+    {path: "",component: DashboardComponent, canActivate:[AuthGurdGuard]},
     {path: "Dashboard", component:DashboardComponent},
     {path: "Invoicing", component: InvoicingComponent}
 

@@ -14,7 +14,7 @@
               </div>
               <div class="col-md-6 col-lg-7 d-flex align-items-center">
                 <div class="card-body p-4 p-lg-5 text-black">
-                  <form>
+                  <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
   
                     <div class="d-flex align-items-center mb-3 pb-1">
                       <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
@@ -25,17 +25,17 @@
                     <h5 class="fw-normal mb-2 pb-2" style="letter-spacing: 1px;">Login into the Application</h5>
   
                     <div class="form-outline mb-2">
-                      <input type="email" id="email" name="email" class="form-control form-control-sm" />
+                      <input type="email" id="Username" name="Username" ngModel class="form-control form-control-sm" />
                       <label class="form-label" for="email">Email address</label>
                     </div>
   
                     <div class="form-outline mb-2">
-                      <input type="password" id="password" name="password" class="form-control form-control-sm" />
+                      <input type="password" id="password" name="password" ngModel class="form-control form-control-sm" />
                       <label class="form-label" for="password">Password</label>
                     </div>
   
                     <div class="pt-1 mb-2">
-                      <button class="btn btn-primary btn-sm btn-block col-md-12" type="button">Login</button>
+                      <button class="btn btn-primary btn-sm btn-block col-md-12" type="submit">Login</button>
                     </div>
   
                     <a class="small text-muted" href="#!">Forgot password?</a>

@@ -51,7 +51,10 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddCors(options => options.AddPolicy(name: "NgOrigins",
     policy =>
     {
-        policy.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader();
+        policy.WithOrigins("http://localhost:4200")
+        .AllowAnyMethod()
+        .AllowAnyHeader()
+        .AllowCredentials();
     }));
 
 var app = builder.Build();
