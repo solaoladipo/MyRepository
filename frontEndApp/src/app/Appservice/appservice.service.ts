@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import {JwtHelperService} from '@auth0/angular-jwt';
 
 
 @Injectable({
@@ -8,8 +9,12 @@ import { Injectable } from '@angular/core';
 export class AppserviceService {
 
   private baseUrl: string = "https://localhost:7252/api/Authenticate/";
+ 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+
+   
+  }
 
   signup(signObj: any){
 
@@ -28,9 +33,33 @@ export class AppserviceService {
     return localStorage.getItem('token');
   }
 
+  storeUsername(username: string){
+    localStorage.setItem('UserName', username );
+  }
+
+  getUsername(){
+    return localStorage.getItem('UserName');
+  }
+
   isLoggedIn(): boolean {
     return !!localStorage.getItem('token');
   }
+
+  Logout(){
+    localStorage.clear();
+  }
+
+  decodeToken(){
+    const jwthelper = new JwtHelperService();
+    const token = this.getStoredToken()!;
+    return jwthelper.decodeToken(token)
+  }
+
+  /* getfullnamefromToken(){
+    if(this.userpayload){
+      return this.userpayload.http;
+    }
+  } */
 
 
 }

@@ -19,6 +19,7 @@ export class LoginComponent {
     this.appserv.signIn(credential).subscribe({
       next: (res) =>{
         this.appserv.storeToken(res.token);
+        this.appserv.storeUsername(res.username);
         this.notifyservice.showSuccess("You have successfully login","Successful");
         this.router.navigate(['layout']);
       },

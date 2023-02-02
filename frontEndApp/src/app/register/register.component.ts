@@ -18,6 +18,7 @@ export class RegisterComponent {
     this.appserv.signup(credential).subscribe({
       next: (res) =>{
         this.notifyservice.showSuccess(res.Message,"Successful");
+        form.reset();
       },
       error : (err)=>{
         this.notifyservice.showError("User creation failed! Please check user details and try again.", "Error");

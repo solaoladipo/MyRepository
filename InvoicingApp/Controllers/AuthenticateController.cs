@@ -54,7 +54,8 @@ namespace InvoicingApp.Controllers
                 return Ok(new
                 {
                     token = new JwtSecurityTokenHandler().WriteToken(token),
-                    expiration = token.ValidTo
+                    expiration = token.ValidTo,
+                    username = user.UserName
                 });
             }
             return Unauthorized();
@@ -97,7 +98,23 @@ namespace InvoicingApp.Controllers
             return token;
         }
 
+        //[HttpGet]
+        //[Route("getUserName")]
+        //public async Task<IActionResult> GetUserName([FromBody] string userName)
+        //{
+        //    string getName = string.Empty;
 
+        //    if (userName != null)
+        //    {
+        //        var user = await _userManager.FindByEmailAsync(userName);
+        //        if(user != null)
+        //        {
+        //            getName = user.UserName;
+        //        }
+        //    }
+
+        //    return Ok(getName);
+        //}
 
 
 
