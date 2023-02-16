@@ -15,10 +15,10 @@ namespace DTOS.SharedModel
             this.Detail = new List<Paymentdetails>();
         }
 
-        public System.Guid ColdingHeadId { get; set; }
+        public string? ColdingHeadId { get; set; }
         public string? Refno { get; set; }
         public string? BeneficiaryCode { get; set; }
-        public System.DateTime TransDate { get; set; }
+        public string? TransDate { get; set; }
         public string? Documentno { get; set; }
 
         [Column(TypeName = "decimal(18,2)")]
@@ -33,7 +33,7 @@ namespace DTOS.SharedModel
         public bool sendforapproval { get; set; }
         public bool approved { get; set; }
         public string? createdby { get; set; }
-        public System.DateTime Datecreated { get; set; }
+        public string? Datecreated { get; set; }
         public string? currency { get; set; }
 
         [Column(TypeName = "decimal(18,2)")]
@@ -46,8 +46,8 @@ namespace DTOS.SharedModel
 
     public class Paymentdetails
     {
-        public Guid ColdingDetailsId { get; set; }
-        public Guid ColdingHeadId { get; set; }
+        public string? ColdingDetailsId { get; set; }
+        public string? ColdingHeadId { get; set; }
         public string? Particulars { get; set; }
         [Column(TypeName = "decimal(18,2)")]
         public decimal? ActualAmount { get; set; }

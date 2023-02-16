@@ -94,13 +94,29 @@ namespace InvoicingApp.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("GetallBeneficiary")]
+        public async Task<ActionResult> GetallBeneficiary()
+        {
+            List<BeneficiaryModel> Record = new List<BeneficiaryModel>();
+            Record = await Task.Run(() => _unitOfwork.Beneficiary.GetAll()
+            .Select(s => new BeneficiaryModel { Name = s.BeneficiaryName, Code = s.BeneficiaryCode }).ToList());
+
+            if(Record.Count > 0) 
+            {
+                return Ok(Record);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         #endregion
-
-
 
         [HttpPost]
         [Route("AddPaymentVoucher")]
-        public async Task<IActionResult> AddPaymentVoucher (PaymentModel paymentModel)
+        public async Task<IActionResult> AddPaymentVoucher ([FromBody] PaymentModel paymentModel)
         {
             Guid refon =  Guid.Parse(GeneralClass.PV_ID());
             Guid HeadId = Guid.NewGuid();
@@ -110,7 +126,7 @@ namespace InvoicingApp.Controllers
                 approved = paymentModel.approved,
                 BeneficiaryCode = paymentModel.BeneficiaryCode,
                 ColdingHeadId = HeadId,
-                createdby = paymentModel.createdby,
+                createdby = User.Identity.Name,
                 currency = paymentModel.currency,
                 Datecreated = DateTime.Now,
                 Documentno = paymentModel.Documentno,
@@ -118,7 +134,7 @@ namespace InvoicingApp.Controllers
                 Refno = await Task.Run(()=> GeneralClass.GetRefnumber(refon, "Refno", "CodingHead", true)),
                 sendforapproval = paymentModel.sendforapproval,
                 TotalAmount = paymentModel.TotalAmount,
-                TransDate = paymentModel.TransDate,
+                TransDate = DateTime.Parse(paymentModel.TransDate),
                 VAT = paymentModel.VAT,
                 WHT = paymentModel.WHT
             };
@@ -165,14 +181,15 @@ namespace InvoicingApp.Controllers
         [Route("ModifyPaymentVoucher")]
         public async Task<IActionResult> ModifyPaymentVoucher(PaymentModel paymentModel)
         {
+            var HeadID = await Task.Run(() => _unitOfwork.CodingHead.Find(x => x.Refno == paymentModel.Refno).FirstOrDefault().ColdingHeadId);
             if (paymentModel.Detail != null)
             {
-                var details = await Task.Run(() => _unitOfwork.CodingDetail.Find(x => x.ColdingHeadId == paymentModel.ColdingHeadId).ToList());
+                var details = await Task.Run(() => _unitOfwork.CodingDetail.Find(x => x.ColdingHeadId == HeadID).ToList());
 
                 _unitOfwork.CodingDetail.RemoveRange(details);
             }
 
-            CodingHead? headModify = await Task.Run(()=> _unitOfwork.CodingHead.Find(x => x.ColdingHeadId == paymentModel.ColdingHeadId).FirstOrDefault());
+            CodingHead? headModify = await Task.Run(()=> _unitOfwork.CodingHead.Find(x => x.ColdingHeadId == HeadID).FirstOrDefault());
             
             if (headModify != null && paymentModel.Detail != null)
             {
@@ -183,8 +200,8 @@ namespace InvoicingApp.Controllers
                     AnotherCharges = paymentModel.AnotherCharges,
                     approved = paymentModel.approved,
                     BeneficiaryCode = paymentModel.BeneficiaryCode,
-                    ColdingHeadId = paymentModel.ColdingHeadId,
-                    createdby = paymentModel.createdby,
+                    ColdingHeadId = HeadID,
+                    createdby = User.Identity.Name,
                     currency = paymentModel.currency,
                     Datecreated = DateTime.Now,
                     Documentno = paymentModel.Documentno,
@@ -192,7 +209,7 @@ namespace InvoicingApp.Controllers
                     Refno = paymentModel.Refno,
                     sendforapproval = paymentModel.sendforapproval,
                     TotalAmount = paymentModel.TotalAmount,
-                    TransDate = paymentModel.TransDate,
+                    TransDate =DateTime.Parse(paymentModel.TransDate),
                     VAT = paymentModel.VAT,
                     WHT = paymentModel.WHT
                 };
@@ -206,7 +223,7 @@ namespace InvoicingApp.Controllers
                     {
                         ActualAmount = detail.ActualAmount,
                         Allocate = detail.Allocate,
-                        ColdingHeadId = detail.ColdingHeadId,
+                        ColdingHeadId = HeadID,
                         ColdingDetailsId = Guid.NewGuid(),
                         NetAmount = detail.NetAmount,
                         Particulars = detail.Particulars,
@@ -241,25 +258,25 @@ namespace InvoicingApp.Controllers
         public async Task<IActionResult> GetPaymentVoucher(string paymentId)
         {
             PaymentModel DataModel = new PaymentModel();
-            Guid RealId = Guid.Parse(paymentId);
-            var Head = await Task.Run(()=> _unitOfwork.CodingHead.Find(x => x.ColdingHeadId == RealId).FirstOrDefault());
-            var Details = await Task.Run(()=> _unitOfwork.CodingDetail.Find(f => f.ColdingHeadId == RealId).ToList());
+           // Guid RealId = Guid.Parse(paymentId);
+            var Head = await Task.Run(()=> _unitOfwork.CodingHead.Find(x => x.Refno == paymentId).FirstOrDefault());
+            var Details = await Task.Run(()=> _unitOfwork.CodingDetail.Find(f => f.ColdingHeadId == Head.ColdingHeadId).ToList());
             if (Head != null && Details != null)
             {
                 DataModel.WHT = Head.WHT;
                 DataModel.sendforapproval = Head.sendforapproval;
                 DataModel.AnotherCharges = Head.AnotherCharges;
-                DataModel.Datecreated = Head.Datecreated;
+                DataModel.Datecreated = Head.Datecreated.ToShortDateString();
                 DataModel.Refno = Head.Refno;
                 DataModel.createdby = Head.createdby;
                 DataModel.BeneficiaryCode = Head.BeneficiaryCode;
                 DataModel.approved = Head.approved;
-                DataModel.ColdingHeadId = Head.ColdingHeadId;
+                DataModel.ColdingHeadId = Head.ColdingHeadId.ToString();
                 DataModel.currency = Head.currency;
                 DataModel.Documentno = Head.Documentno;
                 DataModel.EarlierAdditionorDeduction = Head.EarlierAdditionorDeduction;
                 DataModel.TotalAmount = Head.TotalAmount;
-                DataModel.TransDate = Head.TransDate;
+                DataModel.TransDate = Head.TransDate.ToString("yyyy-MM-dd");
                 DataModel.VAT = Head.VAT;
 
                 foreach (CodingDetail det in Details)
@@ -268,8 +285,8 @@ namespace InvoicingApp.Controllers
                     {
                         ActualAmount = det.ActualAmount,
                         Allocate = det.Allocate,
-                        ColdingHeadId = det.ColdingHeadId,
-                        ColdingDetailsId = det.ColdingDetailsId,
+                        ColdingHeadId = det.ColdingHeadId.ToString(),
+                        ColdingDetailsId = det.ColdingDetailsId.ToString(),
                         NetAmount = det.NetAmount,
                         Particulars = det.Particulars,
                         TransactionFee = det.TransactionFee,

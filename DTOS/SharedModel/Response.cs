@@ -11,4 +11,11 @@ namespace DTOS.SharedModel
         public string? Status { get; set; }
         public string? Message { get; set; }
     }
+
+    public class BeneficiaryModel
+    {
+        public string? Name { get; set; }
+        public string? Code { get; set; }
+    }
+
 }

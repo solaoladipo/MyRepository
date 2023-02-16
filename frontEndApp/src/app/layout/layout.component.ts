@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppserviceService } from '../Appservice/appservice.service';
-import { UserInfoService } from '../Appservice/user-info.service';
+
 
 @Component({
   selector: 'app-layout',
@@ -9,6 +9,7 @@ import { UserInfoService } from '../Appservice/user-info.service';
   styleUrls: ['./layout.component.css']
 })
 export class LayoutComponent implements OnInit {
+[x: string]: any|string;
 
   public fullname : string = "";
 constructor(private router: Router, private appservice: AppserviceService){}
