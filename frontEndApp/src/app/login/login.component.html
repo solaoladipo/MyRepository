@@ -1,0 +1,77 @@
+
+
+<section class="vh-100" style="background-color: #f9a322;">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col col-xl-10">
+          <div class="card" style="border-radius: 1rem;">
+            <div class="row ">
+              <div class="col-md-6 col-lg-5 d-none d-md-block">
+                <div style="padding-left: 60px; padding-top: 100px;">
+                <img src="https://pbs.twimg.com/media/FFC7AaqWQAAjAzQ.jpg:large"
+                  alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                <div class="card-body p-4 p-lg-5 text-black">
+                  <!-- #loginForm="ngForm" (ngSubmit)="login(loginForm)" -->
+                  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+  
+                    <div class="d-flex align-items-center mb-3 pb-1">
+                      <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
+                      <!-- <span class="h1 fw-bold mb-0">Logo</span> -->
+                      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/ArcelorMittal.svg/1280px-ArcelorMittal.svg.png" alt="logo" width="160" height="70" />
+                    </div>
+  
+                    <h5 class="fw-normal mb-2 pb-2" style="letter-spacing: 1px;">Login into the Application</h5>
+  
+                    <div class="form-outline mb-2">
+                      <input type="text"
+                       formControlName="Username"
+                        class="form-control form-control-sm"
+                        [ngClass]="{ 'is-invalid': submitted && f['Username'].errors }"
+                        />
+                      <label class="form-label" for="Username">Username</label>
+                      <div *ngIf="submitted && f['Username'].errors" class="invalid-feedback">
+                        <div *ngIf="f['Username'].errors['required']">Username is required</div>
+                        <div *ngIf="f['Username'].errors['Username']">Username is invalid</div>
+                      </div>
+                    </div>
+  
+                    <div class="form-outline mb-2">
+                      <input type="password" 
+                      formControlName="Password"
+                       class="form-control form-control-sm" 
+                       [ngClass]="{ 'is-invalid': submitted && f['Password'].errors }"
+                       />
+                      <label class="form-label" for="Password">Password</label>
+                      <div *ngIf="submitted && f['Password'].errors" class="invalid-feedback">
+                        <div *ngIf="f['Password'].errors['required']">Password is required</div>
+                        <div *ngIf="f['Password'].errors['minlength']">
+                          Password must be at least 6 characters
+                        </div>
+                        <div *ngIf="f['Password'].errors['maxlength']">
+                          password exceed maximum length
+                        </div>
+                      </div>
+
+                    </div>
+  
+                    <div class="pt-1 mb-2">
+                      <button class="btn btn-primary btn-sm btn-block col-md-12" type="submit">Login</button>
+                    </div>
+  
+                    <a class="small text-muted" href="#!">Forgot password?</a>
+                    <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? <a routerLink="/register"
+                        style="color: #393f81; cursor: pointer;">Register here</a></p>
+
+                  </form>
+  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

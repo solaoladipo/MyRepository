@@ -1,0 +1,103 @@
+
+<section class="vh-100" style="background-color: #f9a322;">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col col-xl-10">
+          <div class="card" style="border-radius: 1rem;">
+            <div class="row">
+              <div class="col-md-6 col-lg-5 d-none d-md-block">
+                <div style="padding-left: 60px; padding-top: 50px; padding-bottom: 40px;">
+                <img src="https://media.istockphoto.com/id/1342641253/photo/headquarters-of-arcelormittal-france.jpg?s=612x612&w=0&k=20&c=a8Fr9ekVsTDzK-wQsnXsGFf_jcAH3rD9KI5JL557Gw4="
+                  alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                <div class="card-body p-4 p-lg-5 text-black">
+                 <!--  #registerForm="ngForm" (ngSubmit)="register(registerForm)" -->
+                  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+  
+                    <div class="d-flex align-items-center mb-3 pb-1">
+                      <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
+                      <!-- <span class="h1 fw-bold mb-0">Logo</span> -->
+                      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/ArcelorMittal.svg/1280px-ArcelorMittal.svg.png" alt="logo" width="160" height="70" />
+                    </div>
+  
+                    <h5 class="fw-normal mb-2 pb-2" style="letter-spacing: 1px;">Register to use the Application</h5>
+
+                    <div class="form-outline mb-2">
+                        <input type="text" 
+                        formControlName="Username"
+                         class="form-control form-control-sm" 
+                         [ngClass]="{ 'is-invalid': submitted && f['Username'].errors }"
+                         />
+                        <label class="form-label" for="Username">Username</label>
+                        <div *ngIf="submitted && f['Username'].errors" class="invalid-feedback">
+                        <div *ngIf="f['Username'].errors['required']">Username is required</div>
+                        </div>
+                      </div>
+  
+                    <div class="form-outline mb-2">
+                      <input type="text"
+                        formControlName="Email"
+                         class="form-control form-control-sm"
+                         [ngClass]="{ 'is-invalid': submitted && f['Email'].errors }"
+                          />
+                      <label class="form-label" for="Email">Email address</label>
+                      <div *ngIf="submitted && f['Email'].errors" class="invalid-feedback">
+                        <div *ngIf="f['Email'].errors['required']">Email is required</div>
+                        <div *ngIf="f['Email'].errors['Email']">Email is invalid</div>
+                      </div>
+                    </div>
+  
+                    <div class="form-outline mb-2">
+                      <input type="password" 
+                      formControlName = "Password"
+                      class="form-control form-control-sm" 
+                      [ngClass]="{ 'is-invalid': submitted && f['Password'].errors }"
+                      />
+                      <label class="form-label" for="Password">Password</label>
+                      <div *ngIf="submitted && f['Password'].errors" class="invalid-feedback">
+                        <div *ngIf="f['Password'].errors['required']">Password is required</div>
+                        <div *ngIf="f['Password'].errors['minlength']">
+                          Password must be at least 6 characters
+                        </div>
+                        <div *ngIf="f['Password'].errors['maxlength']">
+                          Password must not exceed 20 characters
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-outline mb-2">
+                        <input type="password" 
+                        formControlName = "confirmPassword" 
+                        class="form-control form-control-sm" 
+                        [ngClass]="{ 'is-invalid': submitted && f['confirmPassword'].errors }"
+                        />
+                        <label class="form-label" for="confirmPassword">Confirm Password</label>
+                        <div *ngIf="submitted && f['confirmPassword'].errors" class="invalid-feedback">
+                            <div *ngIf="f['confirmPassword'].errors['required']">
+                              Confirm Password is required
+                            </div>
+                          <div *ngIf="f['confirmPassword'].errors['matching']">
+                            Confirm Password does not match
+                          </div>
+                       </div>
+
+                      </div>
+  
+                    <div class="pt-1 mb-2">
+                      <button class="btn btn-primary btn-sm btn-block col-md-12" type="submit">Register</button>
+                    </div>
+  
+                    <p class="mb-5 pb-lg-2" style="color: #393f81;">Already have an account? <a routerLink="/login"
+                        style="color: #393f81; cursor: pointer;">Login here</a></p>
+
+                  </form>
+  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
